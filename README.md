@@ -1,3 +1,5 @@
+Démo/aide pour bob456
+
 # Préparer le projet
 - Commande `npm install`
 

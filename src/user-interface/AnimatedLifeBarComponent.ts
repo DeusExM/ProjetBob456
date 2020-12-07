@@ -54,24 +54,11 @@ export default class AnimatedLifeBarComponent extends createjs.Container {
         // Et le fond
         const width = 150;
         const height = 6 + this.text.getMeasuredHeight();
-        this.hurted.graphics
-            .clear()
-            .beginFill('rgba(200,0,0,0.3)')
-            .drawRoundRect(0, 0, width, height, 10)
-            .endFill();
-
+        this.hurted.graphics.c().f('rgba(200,0,0,0.3)').rr(0, 0, width, height, 10).ef();
         this.background.graphics
-            .clear()
-            .beginStroke('#FFFFFF')
-            .drawRoundRect(0, 0, width, height, 10)
-            .endStroke()
-            .beginLinearGradientFill(['#66FF66', '#339933'], [0, 1], 0, 0, 0, height)
-            .drawRoundRect(2, 2, lifePourcentage * (width - 4), height - 4, 8)
-            .endFill();
-
-        this.text.set({
-            x: 0.5 * width,
-            y: 2,
-        });
+            .c().s('#FFFFFF').rr(0, 0, width, height, 10).es()
+            .lf(lifePourcentage > 0.5 ? ['#66FF66', '#339933'] : lifePourcentage > 0.3 ? ['#ffd966', '#998033'] : ['#ff6666', '#993333'], [0, 1], 0, 0, 0, height)
+            .rr(2, 2, lifePourcentage * (width - 4), height - 4, 8).ef();
+        this.text.set({x: 0.5 * width, y: 2,});
     }
 }
